@@ -38,7 +38,7 @@ https://www.jenkins.io/
 > SonarQube
 
 ```
-C'est est une plate-forme open source pour une inspection continue de la qualité du code afin d'effectuer des révisions automatiques avec analyse statique du code pour détecter les bugs , code smells et les vulnérabilités de sécurité sur plus de 20 langages de programmation.
+C'est une plate-forme open source pour une inspection continue de la qualité du code afin d'effectuer des révisions automatiques avec analyse statique du code pour détecter les bugs , code smells et les vulnérabilités de sécurité sur plus de 20 langages de programmation.
 
 https://www.sonarqube.org/
 
