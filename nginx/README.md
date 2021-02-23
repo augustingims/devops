@@ -2,11 +2,20 @@
 
 ## Ressources
 
->
+> https://github.com/augustingims/devops/tree/main/nginx
 
 ## Les références
 
->
+> https://hub.docker.com/_/nginx
+> https://damianhodgkiss.com/articles/how-to-run-docker-as-a-non-root-user/
+> https://docs.docker.com/engine/install/ubuntu/
+> https://nginx.org/en/docs/
+> http://nginx.org/en/docs/http/ngx_http_core_module.html
+> http://nginx.org/en/docs/http/ngx_http_proxy_module.html
+> http://nginx.org/en/docs/ngx_core_module.html
+> http://nginx.org/en/docs/http/ngx_http_gzip_module.html
+> http://nginx.org/en/docs/http/ngx_http_limit_conn_module.html
+> http://nginx.org/en/docs/http/ngx_http_limit_req_module.html
 
 ## Installation docker
 
@@ -20,7 +29,7 @@
 - sudo apt-get update
 - sudo apt-get install docker-ce docker-ce-cli containerd.io
 
-> Permission docker
+> Exécuter Docker en tant qu'utilisateur non root
 
 - sudo usermod -aG docker ${USER}
 - su - ${USER}
