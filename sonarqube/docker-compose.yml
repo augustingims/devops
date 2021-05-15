@@ -1,0 +1,77 @@
+version: "3.7"
+
+services:
+  sonarqube:
+    image: sonarqube:lts
+    restart: always
+    container_name: sonarqube
+    depends_on:
+      - postgres
+    environment:
+      - sonar.jdbc.username=postgres
+      - sonar.jdbc.password=devops2021
+      - sonar.jdbc.url=jdbc:postgresql://postgres/sonarqube
+    volumes:
+      - sonarqube_conf:/opt/sonarqube/conf
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+    networks:
+      - devops_web_network
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    container_name: postgres
+    environment:
+      POSTGRES_DB: sonarqube
+      POSTGRES_DB_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - devops_web_network
+    secrets:
+      - source: postgres_password
+        target: /run/secrets/postgres_password
+        mode: 444
+
+secrets:
+  postgres_password:
+    file: ./secrets/postgres_password
+
+networks:
+  devops_web_network:
+    external: true
+
+volumes:
+  postgres_data:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "~/devops/postgres_data"
+  sonarqube_conf:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "~/devops/sonarqube_conf"
+  sonarqube_logs:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "~/devops/sonarqube_logs"
+  sonarqube_data:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "~/devops/sonarqube_data"
+  sonarqube_extensions:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "~/devops/sonarqube_extensions"

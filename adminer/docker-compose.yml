@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  adminer:
+    image: adminer:latest
+    restart: always
+    container_name: adminer
+    networks:
+      - devops_web_network
+
+  mysql:
+    image: mysql:8.0.18
+    restart: always
+    container_name: mysql
+    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysql_password
+      - MYSQL_PASSWORD_FILE=/run/secrets/mysql_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - web_network
+    secrets:
+      - source: mysql_password
+        target: /run/secrets/mysql_password
+        mode: 444
+
+secrets:
+  mysql_password:
+    file: ./secrets/mysql_password
+
+networks:
+  devops_web_network:
+    external: true
+
+volumes:
+  mysql_data:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "~/devops/mysql"

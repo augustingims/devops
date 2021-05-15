@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+  nginx-proxy-manager:
+    image: "jc21/nginx-proxy-manager:latest"
+    restart: always
+    container_name: nginx-proxy-manager
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+      - "5000:5000"
+    environment:
+      DISABLE_IPV6: "true"
+    volumes:
+      - ./config/production.json:/app/config/production.json
+      - nginx_data:/data
+      - nginx_letsencrypt:/etc/letsencrypt
+      - nginx_storage:/storage
+    networks:
+      - devops_web_network
+
+networks:
+  devops_web_network:
+    external: true
+
+volumes:
+  nginx_data:
+    driver: local
+    driver_opts:
+    type: "none"
+    o: "bind"
+    device: "~/devops/nginx/data"
+  nginx_letsencrypt:
+    driver: local
+    driver_opts:
+    type: "none"
+    o: "bind"
+    device: "~/devops/nginx/letsencrypt"
+  nginx_storage:
+    driver: local
+    driver_opts:
+    type: "none"
+    o: "bind"
+    device: "~/devops/nginx/storage"

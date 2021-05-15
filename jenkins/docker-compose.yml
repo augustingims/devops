@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  jenkins:
+    image: jenkins/jenkins:latest
+    restart: always
+    container_name: jenkins
+    user: root
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - devops_web_network
+
+networks:
+  devops_web_network:
+    external: true
+
+volumes:
+  jenkins_data:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "~/devops/jenkins_data"
