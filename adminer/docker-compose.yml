@@ -19,7 +19,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
-      - web_network
+      - devops_web_network
     secrets:
       - source: mysql_password
         target: /run/secrets/mysql_password

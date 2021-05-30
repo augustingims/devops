@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  dbeaver:
+    image: dbeaver/cloudbeaver:latest
+    restart: always
+    container_name: dbeaver
+    volumes:
+      - dbeaver_data:/opt/cloudbeaver/workspace
+    networks:
+      - devops_web_network
+
+networks:
+  devops_web_network:
+    external: true
+
+volumes:
+  dbeaver_data:
+    driver: local
+    driver_opts:
+    type: "none"
+    o: "bind"
+    device: "~/devops/dbeaver"

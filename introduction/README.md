@@ -66,3 +66,12 @@ C'est un outil de gestion de base de données complet écrit en PHP.
 https://www.adminer.org/
 
 ```
+
+> CloudBeaver
+
+```
+C'est une application Web légère et moderne pour la gestion de bases de données.
+
+https://cloudbeaver.io/
+
+```
