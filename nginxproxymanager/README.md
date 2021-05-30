@@ -43,3 +43,7 @@ docker network create devops_web_network
 ```bash
 docker-compose up -d --build
 ```
+
+### Information de connexion
+
+> username/password: admin@example.com/changeme
