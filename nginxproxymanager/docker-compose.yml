@@ -28,18 +28,18 @@ volumes:
   nginx_data:
     driver: local
     driver_opts:
-    type: "none"
-    o: "bind"
-    device: "~/devops/nginx/data"
+      type: "none"
+      o: "bind"
+      device: "~/devops/nginx/data"
   nginx_letsencrypt:
     driver: local
     driver_opts:
-    type: "none"
-    o: "bind"
-    device: "~/devops/nginx/letsencrypt"
+      type: "none"
+      o: "bind"
+      device: "~/devops/nginx/letsencrypt"
   nginx_storage:
     driver: local
     driver_opts:
-    type: "none"
-    o: "bind"
-    device: "~/devops/nginx/storage"
+      type: "none"
+      o: "bind"
+      device: "~/devops/nginx/storage"

@@ -17,6 +17,6 @@ volumes:
   dbeaver_data:
     driver: local
     driver_opts:
-    type: "none"
-    o: "bind"
-    device: "~/devops/dbeaver"
+      type: "none"
+      o: "bind"
+      device: "~/devops/dbeaver"
